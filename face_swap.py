@@ -27,7 +27,7 @@ def swap_faces(img,img2,detector,predictor):
     for face in faces:
         landmarks_points=[]
         landmarks=predictor(img_gray,face)
-        for i in range(0,68):
+        for i in range(68):
             x=landmarks.part(i).x
             y=landmarks.part(i).y
             landmarks_points.append((x,y))
@@ -69,7 +69,7 @@ def swap_faces(img,img2,detector,predictor):
     landmarks_points2=[]
     for face in faces2:
         landmarks=predictor(img2_gray,face)
-        for i in range(0,68):
+        for i in range(68):
             x=landmarks.part(i).x
             y=landmarks.part(i).y
             landmarks_points2.append((x,y))
