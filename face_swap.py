@@ -128,10 +128,10 @@ def swap_faces(img,img2,detector,predictor):
         #swapping face    
     img2_final_face=cv2.medianBlur(img2_final_face,5)
     img2_final_face_gray=cv2.cvtColor(img2_final_face,cv2.COLOR_BGR2GRAY)
-    _,background=cv2.threshold(img2_final_face_gray,1,255,cv2.THRESH_BINARY)
-    r=cv2.boundingRect(background)
+    _, final_mask=cv2.threshold(img2_final_face_gray,1,255,cv2.THRESH_BINARY)
+    r=cv2.boundingRect(final_mask)
     center=((r[0]+r[2]//2,r[1]+r[3]//2))
-    result=cv2.seamlessClone(img2_final_face,img2,background,center,cv2.NORMAL_CLONE)
+    result=cv2.seamlessClone(img2_final_face,img2,final_mask,center,cv2.NORMAL_CLONE)
     
 
     return result
